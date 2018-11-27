@@ -1,0 +1,157 @@
+{
+    "extends": "stylelint-config-recommended-scss",
+    "plugins": [
+        "stylelint-a11y",
+        "stylelint-at-rule-no-children",
+        "stylelint-declaration-block-no-ignored-properties",
+        "stylelint-high-performance-animation",
+        "stylelint-order",
+        "stylelint-selector-bem-pattern"
+    ],
+    "rules": {
+        "a11y/selector-pseudo-class-focus": true,
+        "aditayvm/at-rule-no-children": [{
+            "ignore": [
+                "for",
+                "if",
+                "else",
+                "each"
+            ]
+        }],
+        "at-rule-empty-line-before": [
+            "always",
+            {
+                "except": [
+                    "first-nested",
+                    "blockless-after-same-name-blockless"
+                ],
+                "ignore": [
+                    "after-comment"
+                ],
+                "ignoreAtRules": [
+                    "else"
+                ]
+            }
+        ],
+        "at-rule-name-case": "lower",
+        "at-rule-name-space-after": "always-single-line",
+        "at-rule-no-vendor-prefix": true,
+        "at-rule-semicolon-newline-after": "always",
+        "block-no-empty": true,
+        "color-hex-case": "upper",
+        "color-hex-length": "long",
+        "color-named": "never",
+        "comment-empty-line-before": "always",
+        "comment-whitespace-inside": "always",
+        "declaration-block-trailing-semicolon": "always",
+        "declaration-colon-space-after": "always-single-line",
+        "declaration-colon-space-before": "never",
+        "declaration-no-important": true,
+        "font-family-name-quotes": "always-where-recommended",
+        "font-weight-notation": "numeric",
+        "indentation": [
+            4,
+            {
+                "ignore": ["param"]
+            }
+        ],
+        "max-empty-lines": [
+            1,
+            {
+                "ignore": "comments"
+            }
+        ],
+        "max-line-length": [
+            80,
+            {
+                "ignore": "non-comments",
+                "ignorePattern": [
+                    "/stylelint/",
+                    "/<|>/",
+                    "/{|}/",
+                    "/;/"
+                ]
+            }
+        ],
+        "media-feature-colon-space-after": "always",
+        "media-feature-colon-space-before": "never",
+        "media-feature-name-no-vendor-prefix": true,
+        "media-feature-parentheses-space-inside": "never",
+        "media-feature-range-operator-space-after": "always",
+        "media-feature-range-operator-space-before": "always",
+        "no-descending-specificity": null,
+        "no-duplicate-selectors": null,
+        "no-eol-whitespace": [
+            true,
+            {
+                "ignore": ["empty-lines"]
+            }
+        ],
+        "no-missing-end-of-source-newline": true,
+        "number-leading-zero": "always",
+        "order/order": [
+            "custom-properties",
+            "dollar-variables",
+            {
+                "type": "at-rule",
+                "name": "include"
+            },
+            "declarations",
+            {
+                "type": "at-rule",
+                "name": "media"
+            },
+            "rules"
+        ],
+        "plugin/declaration-block-no-ignored-properties": true,
+        "plugin/no-low-performance-animation-properties": [
+            null,
+            {
+                "ignore": "paint-properties",
+                "ignoreProperties": [
+                    "background-color", "transition"
+                ]
+            }
+        ],
+        "plugin/selector-bem-pattern": {
+            "preset": "bem",
+            "implicitComponents": "src/scss/components/**/*.scss",
+            "componentSelectors": "^\\.{componentName}(?:__[a-z0-9]+(?:-[a-z0-9]+)*)*(?:--[a-z0-9]+(?:-[a-z0-9]+)*)*(?:\\[.+\\])*$",
+            "utilitySelectors": "^\\.u-[a-z0-9]+$",
+            "ignoreSelectors": [
+                "\\#\\{\\$[a-z0-9]+(?:-[a-z0-9]+)*\\}"
+            ]
+        },
+        "property-no-vendor-prefix": true,
+        "rule-empty-line-before": [
+            "always-multi-line",
+            {
+                "except": ["first-nested"],
+                "ignore": ["after-comment"]
+            }
+        ],
+        "scss/operator-no-unspaced": true,
+        "scss/operator-no-newline-before": true,
+        "selector-attribute-quotes": "always",
+        "selector-attribute-operator-space-before": "never",
+        "selector-attribute-operator-space-after": "never",
+        "selector-attribute-brackets-space-inside": "never",
+        "selector-combinator-space-after": "always",
+        "selector-list-comma-newline-after": "always",
+        "selector-no-qualifying-type": null,
+        "selector-no-vendor-prefix": true,
+        "selector-pseudo-element-colon-notation": "double",
+        "selector-pseudo-class-parentheses-space-inside": "never",
+        "string-quotes": "single",
+        "unit-no-unknown": true,
+        "value-keyword-case": [
+            "lower",
+            {
+                "ignoreProperties": [
+                    "/font/"
+                ]
+            }
+        ],
+        "value-no-vendor-prefix": true
+    }
+}

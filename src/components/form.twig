@@ -1,0 +1,10 @@
+{% macro input(props) %}
+    {% if props.label %}
+        <label class="form__label"for="{{ props.name }}">{{props.label}}</label>
+    {% endif %}
+    <input class="form__input{% if props.modifier %} form__input--{{ props.modifier }}{% endif %}" type="{{ props.type|default('text') }}" name="{{ props.name }}" value="{{ props.value }}" size="{{ props.size|default(20) }}" />
+{% endmacro %}
+
+{% macro textarea(props) %}
+    <textarea name="{{ props.name }}" rows="{{ props.rows|default(10) }}" cols="{{ props.cols|default(40) }}">{{ props.value|e }}</textarea>
+{% endmacro %}

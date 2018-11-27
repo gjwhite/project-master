@@ -1,0 +1,9 @@
+{% from '../button/button.twig' import button %}
+
+<h2>{{buttongrouptext}}</h2>
+
+<ul>
+    <li>{{ button({modifier: 'primary', text: 'Button Primary'}) }}</li>
+    <li>{{ button({modifier: 'secondary', text: 'Button secondary'}) }}</li>
+    <li>{{ button({modifier: 'reverse', text: 'Button reverse'}) }}</li>
+</ul>

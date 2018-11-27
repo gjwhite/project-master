@@ -1,0 +1,76 @@
+// RGBA fallback
+@mixin rgba($property, $background: black, $opacity: 0.75) {
+    #{$property}: rgba($background, $opacity);
+}
+
+// Multiply unit
+@function multiply($unit, $factor) {
+    @return $unit * $factor;
+}
+
+// Gradient BG
+@mixin bgGradient($bg-from, $bg-to) {
+    background: $bg-from;/* Old Browsers */
+    background: linear-gradient(to bottom, $bg-from 0%, $bg-to 90%);/* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startcolorstr='$bg-from', endcolorstr='$bg-to', gradienttype=0 );/* IE6-9 */
+}
+
+//When using ::before and ::after you'll always need these three,
+//so we're saving two lines of code every time you use this.
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+    content: $content;
+    display: $display;
+    position: $pos;
+}
+
+//We use this for creating scalable elements
+//(usually images / background images) that maintain a ratio.
+@mixin responsive-ratio($x,$y, $pseudo: false) {
+    $padding: unquote( ( $y / $x ) * 100 + '%' );
+
+    @if $pseudo {
+        &::before {
+            @include pseudo($pos: relative);
+            width: 100%;
+            padding-top: $padding;
+        }
+    } @else {
+        padding-top: $padding;
+    }
+}
+
+// This mixin takes all the hassle out of creating that triangle you'll see
+// coming out of most traditional tooltips, all without images, you just specify
+// it's colour, how big you want it, the direction it's going to come out
+// of your element and you're done!
+@mixin css-triangle($color, $direction, $size: 6px, $position: absolute, $round: false){
+    @include pseudo($pos: $position);
+    width: 0;
+    height: 0;
+
+    @if $round {
+        border-radius: 3px;
+    }
+
+    @if $direction == down {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-top: $size solid $color;
+        margin-top: 0 - round( $size / 2.5 );
+    } @else if $direction == up {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-bottom: $size solid $color;
+        margin-bottom: 0 - round( $size / 2.5 );
+    } @else if $direction == right {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-left: $size solid $color;
+        margin-right: -$size;
+    } @else if  $direction == left {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-right: $size solid $color;
+        margin-left: -$size;
+    }
+}

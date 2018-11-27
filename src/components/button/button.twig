@@ -1,0 +1,9 @@
+{% macro button(props) %}
+
+    <button class="button button--{{props.modifier|default('default')}}">{{props.text|default('My button')}}</button>
+
+{% endmacro %}
+
+<!---->
+
+<button class="button button--{{props.modifier|default('default')}}">{{props.text|default('My button')}}</button>

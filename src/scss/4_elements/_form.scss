@@ -1,0 +1,20 @@
+.form {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form__label {
+    display: block;
+}
+
+.form__input {
+    display: block;
+    margin-top: 0;
+    width: 100%;
+    max-width: 50%;
+}
+
+.form__input--full {
+    max-width: 100%;
+}

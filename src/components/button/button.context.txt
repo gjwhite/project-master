@@ -1,0 +1,8 @@
+{{
+    button({
+
+        modifier: 'primary',
+        text: 'Button Primary'
+
+    })
+}}
