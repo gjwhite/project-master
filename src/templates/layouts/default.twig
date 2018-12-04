@@ -1,15 +1,26 @@
-<!doctype html>
-<html lang="zxx">
+<!DOCTYPE html>
+<html>
     <head>
-    {% include "../includes/header.twig" %}
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="author" content="name">
+        <meta name="description" content="description here">
+        <meta name="keywords" content="keywords,here">
+        {% include "../includes/header.twig" %}
     </head>
-<body>
-    <!-- MAIN -->
-    <main>
-	{% block content %}
 
-	{% endblock %}
-    </main>
-    {% include "../includes/footer.twig" %}
-</body>
+    <body>
+
+        <main>
+
+        {% block content %}
+            {# This is default content that can get replaced #}
+        {% endblock %}
+
+        </main>
+
+        {% include "../includes/footer.twig" %}
+
+    </body>
 </html>

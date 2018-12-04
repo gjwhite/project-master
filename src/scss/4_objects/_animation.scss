@@ -33,6 +33,20 @@
     }
 }
 
+@keyframes place {
+    0% {
+        transform: translate3d(0, -3px, 1px) scale(1.01);
+        box-shadow: 0px 2px 4px 0px rgba($ct-dark, 0.2);
+        perspective: 1000px;
+    }
+
+    100% {
+        transform: translate3d(0, 0px, 0px) scale(0.995);
+        box-shadow: 0px 0px 8px 0px rgba($ct-dark, 0.1);
+        perspective: 10px;
+    }
+}
+
 // @keyframes scootRight {
 //     0% {
 //         opacity: 0;

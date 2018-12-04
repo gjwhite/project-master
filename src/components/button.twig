@@ -1,0 +1,10 @@
+{% macro buttons(props) %}
+
+    <button class="button
+        {% if props.variant %}button--{{props.variant}}{% endif %}
+        {% if props.extraClasses %}{{ props.extraClasses }}{% endif %}
+    ">
+        {{props.text|default('View more')}}
+    </button>
+
+{% endmacro %}

@@ -9,6 +9,8 @@ sass = require('gulp-sass'),
 plumber = require('gulp-plumber'),
 concat = require('gulp-concat'),
 rename = require('gulp-rename'),
+cache = require('gulp-cache'),
+imagemin = require('gulp-imagemin'),
 sourcemaps = require('gulp-sourcemaps'),
 browserSync = require('browser-sync'),
 fs = require('fs');
@@ -95,7 +97,10 @@ return gulp.src(paths.sass + 'main.scss')
    .pipe(prefix(['last 4 versions', '> 1%'], {
       cascade: true
    }))
-   .pipe(gulp.dest(paths.css));
+   .pipe(gulp.dest(paths.css))
+   .pipe(browserSync.reload({
+        stream: true
+    }));
 });
 /**
  * Compile .js files into build js directory With app.min.js
@@ -110,6 +115,16 @@ gulp.task('js', function(){
          console.log(err.toString());
          this.emit('end');
       });
+});
+/**
+ * Crunch images and port them into build directory
+ */
+gulp.task('images', function(){
+	return gulp.src('src/assets/**/*.+(png|jpg|jpeg|gif|svg)')
+	.pipe(cache(imagemin({
+		interlaced: true
+	  })))
+	.pipe(gulp.dest('build/assets'))
 });
 /**
  * Watch scss files for changes & recompile

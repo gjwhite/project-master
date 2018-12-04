@@ -1,0 +1,136 @@
+.card {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-flow: wrap column;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background-color: lighten($c-four, 10%);
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0;
+    transform: translate3d(0) scale(1);
+    perspective: 0px;
+    transition: all 0.6s $easing-smooth 0s;
+
+    &:hover,
+    &:focus {
+        transform: translate3d(0, -3px, 1px) scale(1.01);
+        box-shadow: 0px 2px 4px 0px rgba($ct-dark, 0.2);
+        perspective: 10px;
+
+        .card__image {
+            background-size: 101%;
+        }
+    }
+
+    &:active {
+        transform: translate3d(0, -2px, 0px) scale(1.005);
+        box-shadow: 0px 1px 8px 1px rgba($ct-dark, 0.1);
+        perspective: 5px;
+        transition: all 0.2s $easing-smooth 0s;
+    }
+}
+
+.card__image {
+    @include responsive-ratio(6,4);
+    background-size: 100%;
+    background-position: center center;
+    background-color: darken($c-four, 5%);
+    background-repeat: no-repeat;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.card__inner {
+    margin-top: 0;
+    border: 0.05rem solid $c-four;
+    border-radius: 0 0 4px 4px;
+    padding: 20px;
+}
+
+.card__context {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.card__context-icon {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+
+.card__context-text {
+    color: $c-seven;
+    font-size: 12px;
+    margin: 0;
+}
+
+.card__title {
+    color: $c-six;
+    font-size: 32px;
+}
+
+.card__description {
+    font-size: 18px;
+}
+
+.card__button-group {
+    width: 100%;
+
+    > * {
+        display: inline-block;
+        margin: 0 10px;
+    }
+}
+
+.card__tag {
+    color: $c-seven;
+    font-size: 12px;
+}
+
+.card__date {
+    color: $c-seven;
+    font-size: 12px;
+}
+
+.card--fullbody {
+    min-height: 500px;
+    align-items: center;
+    justify-content: center;
+
+    .card__image {
+        padding: 0;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        z-index: 1;
+    }
+
+    .card__inner {
+        color: $ct-light;
+        z-index: 2;
+        display: flex;
+        flex-flow: wrap column;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border: 0;
+        background: rgba($ct-dark, 0.4);
+    }
+
+    &:hover,
+    &:focus {
+        .card__image {
+            background-size: cover;
+        }
+    }
+
+    &:active {
+        .card__image {
+            background-size: cover;
+        }
+    }
+}

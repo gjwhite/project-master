@@ -1,0 +1,13 @@
+* + * {
+    margin-top: 1.5em;
+}
+
+.page-center {
+    position: relative;
+    width: 100%;
+    padding: 10% 2%;
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-around;
+    align-items: center;
+}

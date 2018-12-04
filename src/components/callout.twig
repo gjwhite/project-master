@@ -1,0 +1,10 @@
+{% from 'button.twig' import button %}
+
+<div class="c-callout">
+
+    <h2 class-"c-callout__header">{{ calloutTitle }}</h2>
+
+    {{ button({modifier: 'primary', text: 'Join'}) }}
+    {{ button({modifier: 'ghost', text: 'Learn more'}) }}
+
+</div>
