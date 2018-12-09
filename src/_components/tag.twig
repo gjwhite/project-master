@@ -1,0 +1,30 @@
+{# _components/tag.twig #}
+
+{#
+    Tag
+    @props {string} text (Text inside the Tag)
+    @props {array} variant (optional)
+        [
+            {string}
+        ]
+    @props {array} extraClasses (optional)
+        [
+            {string}
+        ]
+#}
+
+<span
+    class="
+        c-tag
+        {% if props.variant|length %}
+            {% for variants in props.variant %}
+                c-tag--{{ variants -}}
+            {% endfor %}
+        {% endif %}
+
+        {% if props.extraClasses|length %}
+            {{- props.extraClasses|join(' ') }}
+        {% endif %}
+    ">
+    {{ props.text }}
+</span>

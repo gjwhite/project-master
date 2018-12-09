@@ -1,51 +1,73 @@
 {% from 'card.twig' import card %}
 
-<section class="page-center">
+<section class="section section--centered">
 
-    {{ card({
-        variant: 'image',
-        image: './assets/img/hong-kong.jpg',
-        title: 'Standard card',
-        description: 'this here is the card description',
-        tag: 'tag',
-        date: 'date'
-    }) }}
+    {{
+        card({
+            variant: 'image',
+            image: './assets/img/hong-kong.jpg',
+            title: 'Standard card',
+            description: 'this here is the card description',
+            button: [
+            ],
+            tag: 'tag',
+            date: 'date'
+        })
+    }}
 
-    {{ card({
-        variant: 'fullbody',
-        extraClasses: 'square',
-        image: './assets/img/hong-kong.jpg',
-        title: 'fullbody card',
-        description: 'this here is the card description',
-        buttons: [
-            {
-                text: 'hello',
-                variant: 'primary',
-                extraClasses: 'u-round'
-            },
-            {
-                text: 'goodbye',
-                variant: 'secondary'
-            }
-        ],
-        tag: 'tag',
-        date: 'date'
-    }) }}
+    {{
+        card({
+            variant: [
+                'fullbody'
+            ],
+            extraClasses: [
+                'u-square'
+            ],
+            image: './assets/img/hong-kong.jpg',
+            title: 'fullbody card',
+            description: 'this here is the card description',
+            button: [
+                {
+                    text: 'hello',
+                    variant: [
+                        'primary'
+                    ],
+                    extraClasses: [
+                        'u-round'
+                    ]
+                },
+                {
+                    text: 'goodbye',
+                    variant: [
+                        'secondary'
+                    ]
+                }
+            ],
+            tag: 'tag',
+            date: 'date'
+        })
+    }}
 
-    {{ card({
-        variant: 'standard',
-        contextIcon: './assets/img/rocket.png',
-        contextText: 'Rocket',
-        title: 'standard card',
-        description: '',
-        buttons: [
-            {
-                text: 'hello',
-                variant: 'primary'
-            }
-        ],
-        tag: 'tag',
-        date: 'date'
-    }) }}
+    {{
+        card({
+            variant: [
+                'standard'
+            ],
+            contextIcon: './assets/img/rocket.png',
+            contextText: 'Rocket',
+            title: 'standard card',
+            description: '',
+            button: [
+                {
+                    text: 'hello',
+                    variant: [
+                        'primary'
+                    ]
+                }
+            ],
+            tag: 'tag',
+            date: 'date'
+        })
+    }}
 
 </section>

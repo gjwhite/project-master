@@ -1,14 +1,65 @@
 {% extends "layouts/default.twig" %}
+{% from '../components/tag-group.twig' import tagGroup %}
 {% block content %}
     <!-- =============== Block Main Top =============== -->
     {% include 'blocks/block-main-top.twig' %}
     <div class="container">
-        <div class="col-lg-7 text-center mx-auto border border-warning py-4 px-5 my-5">
-            <h1 class="display-1 text-warning">Gulp, Twig and SCSS</h1>
-            <span class="text-secondary">{{description}}</span>
-        </div>
 
         {% include '../components/cards.twig' %}
+
+        <section class="section section--centered">
+
+            {{
+                tagGroup({
+                    title: 'My tag group',
+                    tag: [
+                        {
+                            text: 'Tag 1',
+                            variant: [
+                                'rounded',
+                                'alternate'
+                            ],
+                            extraClasses: [
+                                'u-class'
+                            ]
+                        },
+                        {
+                            text: 'Tag 2'
+                        }
+                    ]
+                })
+            }}
+
+        <section>
+
+        {% import '../_macros/components.twig' as components %}
+
+        {% for video in videos %}
+            {{ components.video({
+                id: '123',
+                title: 'video title',
+                image: 'image',
+                textOnVideo: true,
+                classes: [
+                    'o-video--large',
+                    'u-align-left'
+                ]
+            }) }}
+        {% endfor %}
+
+        <div class="tag-group">
+                {{ components.tag({
+                    text: 'Tag',
+                    variant: [
+                        'primary',
+                        'secondary'
+                    ],
+                    extraClasses: [
+                        'one',
+                        'two'
+                    ]
+                }) }}
+        </div>
 
     </div>
     <!-- =============== Block Main Bottom =============== -->

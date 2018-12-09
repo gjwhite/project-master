@@ -1,0 +1,57 @@
+{# _components/video.html #}
+
+{#
+    Video
+    From the provided YouTube video ID, we generate the YouTube embed code.
+    @param {string} id (YouTube video ID)
+    @param {string} title (optional)
+    @param {string} meta (optional)
+    @param {object} image (AssetFileModel) (Poster image)
+    @param {bool} textOnVideo (optional) (whether the video information is placed under or on top of the video)
+    @param {array} classes (optional)
+        [
+            {string}
+        ]
+#}
+
+{# Parameters #}
+{# {% set videoId = props.id ?? null %}
+{% set videoTitle = props.title ?? craft.youtubeInformation.getTitle(videoId) %}
+{% set videoMeta = props.meta ?? null %}
+{% set videoImage = props.image[0] ?? null %}
+{% set videoTextOnVideo = props.textOnVideo ?? false %}
+{% set videoClasses = props.classes ?? null %} #}
+
+{# Variables #}
+{# {% set videoDuration = null %}
+{% if videoTextOnVideo|length %}
+    {% set videoDuration = craft.youtubeInformation.getDuration(videoId) %}
+{% endif %}
+{% set videoCoverTransform = {
+    width: 1200,
+    height: 675
+} %} #}
+
+{# Output #}
+{% if videoId|length %}
+    <a class="c-video {{ videoClasses|join(' ') }} js-youtube-play" href="https://www.youtube.com/watch?v={{ videoId }}" target="_blank">
+        <div class="c-video__container">
+            <div class="c-video__player js-youtube-player" data-video="{{ videoId }}"></div>
+        </div>
+        <div class="c-video__placeholder" style="background-image: url('{{ videoImage.getUrl(videoCoverTransform) }}')">
+            <div class="c-video__controls">
+                <svg class="o-icon c-video__icon c-video__icon--play">
+                    <use xlink:href="/_assets/dist/img/icons.svg#play"></use>
+                </svg>
+            </div>
+            {% if videoTextOnVideo %}
+                {{- videoTitle -}}
+                {% if videoDuration|length %}<br>{{- videoDuration -}}{% endif %}
+            {% endif %}
+        </div>
+    </a>
+    {% if not videoTextOnVideo %}
+        {% if videoMeta|length %}{{- videoMeta -}}<br>{% endif %}
+        {{- videoTitle -}}
+    {% endif %}
+{% endif %}

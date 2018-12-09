@@ -1,0 +1,22 @@
+{% macro tagGroup(props) %}
+
+<div class="c-tag-group">
+    <h2 class="c-tag-group__title">{{props.title}}</h2>
+
+    {% if props.tag|length %}
+        {% from 'tag.twig' import tag %}
+        {% if props.tag|length > 1 %}
+            <div class="c-tag-group__tags">
+                {% for tags in props.tag %}
+                    {{ tag(tags) }}
+                {% endfor %}
+            </div>
+        {% else %}
+            {% for tags in props.tag %}
+                {{ tag(tags) }}
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+</div>
+
+{% endmacro %}

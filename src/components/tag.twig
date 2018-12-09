@@ -1,0 +1,19 @@
+{% macro tag(props) %}
+
+    <span
+        class="
+            c-tag
+            {% if props.variant|length %}
+                {% for variants in props.variant %}
+                    c-tag--{{ variants }}
+                {% endfor %}
+            {% endif %}
+
+            {% if props.extraClasses|length %}
+                {{- props.extraClasses|join(' ') }}
+            {% endif %}
+        ">
+        {{- props.text -}}
+    </span>
+
+{% endmacro %}

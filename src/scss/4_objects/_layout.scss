@@ -2,12 +2,15 @@
     margin-top: 1.5em;
 }
 
-.page-center {
+.section {
     position: relative;
     width: 100%;
     padding: 10% 2%;
+}
+
+.section--centered {
     display: flex;
     flex-flow: wrap row;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
 }

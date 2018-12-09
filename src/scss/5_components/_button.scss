@@ -1,16 +1,16 @@
-.button {
+.c-button {
     padding: 10px 20px;
     cursor: pointer;
     outline: none;
     border: none;
 }
 
-.button--primary {
+.c-button--primary {
     background-color: $cl-rest;
     border: 1px solid darken($cl-rest, 5%);
 }
 
-.button--secondary {
+.c-button--secondary {
     background-color: $cl-hover;
     border: 1px solid darken($cl-hover, 5%);
 }

@@ -39,8 +39,8 @@ gulp.task('twig', function () {
       this.emit('end');
    }}))
    .pipe(data(function (file) {
-      return JSON.parse(fs.readFileSync(paths.data +
-path.basename(file.path) + '.json'));
+        return JSON.parse(fs.readFileSync(paths.data +
+        path.basename(file.path) + '.json'));
    }))
    .pipe(twig())
    .on('error', function (err) {
@@ -135,6 +135,8 @@ gulp.task('watch', function () {
    gulp.watch(paths.sass + 'scss/main.scss', ['sass', browserSync.reload]);
    gulp.watch([
        'src/templates/**/*.twig',
+       'src/**/**/*.twig',
+       'src/scss/**/*.scss',
        'src/data/**/*.twig.json'
      ],
      {cwd:'./'},

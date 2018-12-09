@@ -1,49 +1,57 @@
 {% macro card(props) %}
 
-    <article class="card
-        {% if props.variant %} card--{{ props.variant }}{% endif %}
-        {% if props.extraClasses %}{{ props.extraClasses }}{% endif %}
-    ">
-        {% if props.image %}
-            <div class="card__image" style="background-image:url('{{ props.image }}');"></div>
+    <article class="c-card
+        {% if props.variant|length %}
+            {% for variants in props.variant %}
+                c-card--{{ variants -}}
+            {% endfor %}
         {% endif %}
 
-        <div class="card__inner">
+        {% if props.extraClasses|length %}
+            {{ props.extraClasses|join(' ') }}
+        {% endif %}
+    ">
+
+        {% if props.image %}
+            <div class="c-card__image" style="background-image:url('{{ props.image }}');"></div>
+        {% endif %}
+
+        <div class="c-card__inner">
 
             {% if props.contextIcon %}
-                <div class="card__context">
-                    <img class="card__context-icon" src="{{ props.contextIcon }}" alt="{{ props.contextText }}">
-                    <h5 class="card__context-text">{{ props.contextText }}</h5>
+                <div class="c-card__context">
+                    <img class="c-card__context-icon" src="{{ props.contextIcon }}" alt="{{ props.contextText }}">
+                    <h5 class="c-card__context-text">{{ props.contextText }}</h5>
                 </div>
             {% endif %}
 
-            <h2 class="card__title">{{ props.title }}</h2>
+            <h2 class="c-card__title">{{ props.title }}</h2>
 
             {% if props.description %}
-                <p class="card__description">{{ props.description }}</p>
+                <p class="c-card__description">{{ props.description }}</p>
             {% endif %}
 
-            {% if props.buttons is defined %}
-                {% from 'button.twig' import buttons %}
-                {% if props.buttons|length > 1 %}
-                <div class="card__button-group">
-                    {% for button in props.buttons %}
-                        {{ buttons(button) }}
-                    {% endfor %}
-                </div>
+            {% if props.button|length %}
+                {% from 'button.twig' import button %}
+                {% if props.button|length > 1 %}
+                    <div class="c-card__buttons">
+                        {% for buttons in props.button %}
+                            {{ button(buttons) }}
+                        {% endfor %}
+                    </div>
                 {% else %}
-                    {% for button in props.buttons %}
-                        {{ buttons(button) }}
+                    {% for buttons in props.button %}
+                        {{ button(buttons) }}
                     {% endfor %}
                 {% endif %}
             {% endif %}
 
             {% if props.tag %}
-                <h4 class="card__tag">{{ props.tag }}</h4>
+                <h4 class="c-card__tag">{{ props.tag }}</h4>
             {% endif %}
 
             {% if props.date %}
-                <h4 class="card__date">{{ props.date }}</h4>
+                <h4 class="c-card__date">{{ props.date }}</h4>
             {% endif %}
 
         </div>
