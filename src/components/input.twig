@@ -1,0 +1,4 @@
+{% macro input(props) %}
+    <label class="c-input__label" for="{{ props.name }}">{{props.label}}</label>
+    <input class="c-input" type="{{ props.type|default('text') }}" name="{{ props.name }}" value="{{ props.value }}" />
+{% endmacro %}

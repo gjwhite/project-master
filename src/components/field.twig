@@ -1,0 +1,13 @@
+{% macro field(props) %}
+
+    {% from 'input.twig' import input %}
+
+    <div class="c-field">
+        <h3 class="c-field__title">{{ props.title }}</h3>
+        <span class="c-field__helper">{{ props.helper }}</span>
+        {% for inputs in props.input %}
+            {{ input(inputs) }}
+        {% endfor %}
+        <span class="c-field__validation">{{ props.validation }}</span>
+    </div>
+{% endmacro %}

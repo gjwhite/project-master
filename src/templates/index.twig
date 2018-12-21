@@ -1,11 +1,31 @@
 {% extends "layouts/default.twig" %}
 {% from '../components/tag-group.twig' import tagGroup %}
+{% from '../components/field.twig' import field %}
 {% block content %}
     <!-- =============== Block Main Top =============== -->
     {% include 'blocks/block-main-top.twig' %}
     <div class="container">
 
-        {% include '../components/cards.twig' %}
+        {# {% include '../components/cards.twig' %} #}
+
+    <section class="section section--centered">
+
+        {{ field({
+            title: 'Name',
+            helper: 'this is a name field',
+            input: [
+                {
+                    type: 'text',
+                    name: 'name',
+                    label: 'First name(s)*',
+                    value: ''
+                }
+            ],
+            validation: 'Please enter youÆre name'
+        }) }}
+
+    </section>
+
 
         <section class="section section--centered">
 
@@ -50,10 +70,7 @@
         <div class="tag-group">
                 {{ components.tag({
                     text: 'Tag',
-                    variant: [
-                        'primary',
-                        'secondary'
-                    ],
+                    variant:'c-tag--primary',
                     extraClasses: [
                         'one',
                         'two'

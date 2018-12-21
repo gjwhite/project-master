@@ -13,4 +13,6 @@
     flex-flow: wrap row;
     justify-content: space-around;
     align-items: flex-start;
+    perspective: 1000px;
+    transform-style: preserve-3d;
 }

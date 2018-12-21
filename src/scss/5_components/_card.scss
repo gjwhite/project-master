@@ -9,16 +9,20 @@
     background-color: lighten($c-four, 10%);
     overflow: hidden;
     box-shadow: 0;
-    transform: translate3d(0) scale(1);
+    perspective: 1000px;
+    transform: rotateY(0deg) rotateX(0deg) scale(1) translate3d(0, 0, 0);
+    transform-style: preserve-3d;
+    backface-visibility: visibile;
+    transform-origin: center center;
     transition: all 0.6s $easing-smooth 0s;
 
     &:hover,
     &:focus {
-        transform: translate3d(0, -3px, 1px) scale(1.01);
-        box-shadow: 0px 2px 4px 0px rgba($ct-dark, 0.2);
+        //transform: rotateY(180deg) rotateX(2deg) scale(1.01) translate3d(-2px, -16px, 0);
+        box-shadow: -6px 6px 20px 0px rgba($ct-dark, 0.2);
 
         .c-card__image {
-            background-size: 101%;
+            background-size: 110%;
         }
     }
 
@@ -35,7 +39,8 @@
     background-position: center center;
     background-color: darken($c-four, 5%);
     background-repeat: no-repeat;
-    transition: all 0.3s ease-in-out 0s;
+    transition: background-size 3s $easing-smooth 0s;
+    backface-visibility: hidden;
 }
 
 .c-card__inner {
@@ -43,6 +48,11 @@
     border: 0.05rem solid $c-four;
     border-radius: 0 0 4px 4px;
     padding: 20px;
+    perspective: 1500px;
+    transform: translate3d(0, 0, 50px);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    //transform: rotateY(0deg) rotateX(0deg) scale(1) translate3d(0, 0, 0);
 }
 
 .c-card__context {
@@ -74,6 +84,10 @@
 
 .c-card__buttons {
     width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    margin-top: 0;
 }
 
 .c-card__tag {
@@ -101,6 +115,7 @@
     }
 
     .c-card__inner {
+        position: relative;
         color: $ct-light;
         z-index: 2;
         display: flex;
@@ -109,7 +124,6 @@
         justify-content: center;
         padding: 0;
         border: 0;
-        background: rgba($ct-dark, 0.4);
     }
 
     &:hover,
